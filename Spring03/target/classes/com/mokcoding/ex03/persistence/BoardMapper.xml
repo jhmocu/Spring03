@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="boardContent" column="BOARD_CONTENT" />
 		<result property="memberId" column="MEMBER_ID" />
 		<result property="boardDateCreated" column="BOARD_DATE_CREATED" />
+		<result property="replyCount" column="REPLY_COUNT"/>
 	</resultMap>
 
 	<!-- select, insert, update, delete 태그 : SQL 쿼리 정의 태그 id : 쿼리 식별 역할. Mapper 
@@ -23,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert">
 		<!-- 게시글 등록 -->
-		INSERT INTO BOARD VALUES (BOARD_SEQ.NEXTVAL, #{boardTitle},
-		#{boardContent}, #{memberId}, SYSDATE)
+		INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID)
+		VALUES (BOARD_SEQ.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberId})
 	</insert>
 
 	<select id="selectList" resultMap="boardResultMap">
