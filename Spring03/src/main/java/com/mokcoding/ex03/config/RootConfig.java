@@ -13,8 +13,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import lombok.extern.log4j.Log4j;
-
 // root-context.xml과 동일
 @Configuration
 @ComponentScan(basePackages = {"com.mokcoding.ex03.service"})
@@ -27,7 +25,7 @@ public class RootConfig {
 	public DataSource dataSource() { // DataSource 객체 리턴 메서드
 		HikariConfig config = new HikariConfig(); // 설정 객체
 		config.setDriverClassName("oracle.jdbc.OracleDriver"); // jdbc 드라이버 정보
-		config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe"); // DB 연결 url
+		config.setJdbcUrl("jdbc:oracle:thin:@192.168.0.139:1521:xe"); // DB 연결 url
 		config.setUsername("STUDY"); // DB 사용자 아이디
 		config.setPassword("1234"); // DB 사용자 비밀번호
 		
