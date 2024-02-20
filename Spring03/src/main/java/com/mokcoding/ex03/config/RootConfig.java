@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -19,6 +22,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @ComponentScan(basePackages = {"com.mokcoding.aspect"})
 @EnableAspectJAutoProxy
 @MapperScan(basePackages = {"com.mokcoding.ex03.persistence"})
+@EnableTransactionManagement // 트랜잭션 관리 활성화
 public class RootConfig {
 	
 	@Bean // 스프링 bean으로 설정
@@ -42,5 +46,9 @@ public class RootConfig {
 		return (SqlSessionFactory) sqlSessionFactoryBean.getObject();
 	}
 	
-	
+	// 트랜잭션 매니저 객체를 빈으로 등록
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 } // end RootConfig

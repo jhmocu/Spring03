@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mokcoding.ex03.domain.Reply;
 import com.mokcoding.ex03.domain.ReplyDTO;
@@ -23,6 +24,8 @@ public class ReplyServiceImple implements ReplyService{
 	@Autowired
 	private BoardMapper boardMapper;
 	
+	
+	@Transactional(value = "transactionManager")
 	@Override
 	public int createReply(ReplyDTO replyDTO) {
 		log.info("createReply()");
@@ -45,6 +48,7 @@ public class ReplyServiceImple implements ReplyService{
 		return list.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 
+	@Transactional(value = "transactionManager")
 	@Override
 	public int updateReply(int replyId, String replyContent) {
 		log.info("updateReply()");
