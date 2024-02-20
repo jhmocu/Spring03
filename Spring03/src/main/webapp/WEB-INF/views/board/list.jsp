@@ -56,6 +56,7 @@ li {
 				<th style="width: 700px">제목</th>
 				<th style="width: 120px">작성자</th>
 				<th style="width: 100px">작성일</th>
+				<th style="widt: 50px">댓글 수</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -68,6 +69,7 @@ li {
 					<fmt:formatDate value="${boardDTO.boardDateCreated }"
 						pattern="yyyy-MM-dd HH:mm:ss" var="boardDateCreated" />
 					<td>${boardDateCreated }</td>
+					<td>${boardDTO.replyCount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

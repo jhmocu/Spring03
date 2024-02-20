@@ -60,8 +60,8 @@ public class ReplyServiceImple implements ReplyService{
 	public int deleteReply(int replyId, int boardId) {
 		log.info("deleteReply()");
 		log.info("replyId = " + replyId);
-		int insertResult = replyMapper.delete(replyId);
-		log.info(insertResult + "행 댓글 삭제");
+		int deleteResult = replyMapper.delete(replyId);
+		log.info(deleteResult + "행 댓글 삭제");
 		
 		int updateResult = boardMapper
 				.updateReplyCount(boardId, -1);
