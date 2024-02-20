@@ -13,7 +13,6 @@ import com.mokcoding.ex03.persistence.BoardMapper;
 import com.mokcoding.ex03.persistence.ReplyMapper;
 
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.driver.OracleSQLException;
 
 @Service
 @Log4j
