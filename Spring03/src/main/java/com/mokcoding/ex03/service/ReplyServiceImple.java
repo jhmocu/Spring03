@@ -25,16 +25,14 @@ public class ReplyServiceImple implements ReplyService{
 	private BoardMapper boardMapper;
 	
 	
-	@Transactional(value = "transactionManager")
+	@Transactional(value = "transactionManager") // transactionManager가 관리
 	@Override
-	public int createReply(ReplyDTO replyDTO) {
+	public int createReply(ReplyDTO replyDTO){
 		log.info("createReply()");
 		log.info("replyDTO = " + replyDTO);
 		int insertResult = replyMapper.insert(toEntity(replyDTO));
 		log.info(insertResult + "행 댓글 추가");
-		
-		int updateResult = boardMapper
-				.updateReplyCount(replyDTO.getBoardId(), 1);
+		int updateResult = boardMapper.updateReplyCount(replyDTO.getBoardId(), 1);
 		log.info(updateResult + "행 게시판 수정");
 		return 1;
 	}
@@ -48,7 +46,7 @@ public class ReplyServiceImple implements ReplyService{
 		return list.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 
-	@Transactional(value = "transactionManager")
+
 	@Override
 	public int updateReply(int replyId, String replyContent) {
 		log.info("updateReply()");
@@ -60,6 +58,7 @@ public class ReplyServiceImple implements ReplyService{
 		return replyMapper.update(reply);
 	}
 
+	@Transactional(value = "transactionManager")
 	@Override
 	public int deleteReply(int replyId, int boardId) {
 		log.info("deleteReply()");
