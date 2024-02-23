@@ -21,7 +21,13 @@ public class ReplyServiceTest {
 	
 	@Test
 	public void test() {
-		testReplyCreate();
+//		testReplyCreate();
+		testReplyDelete();
+	}
+
+	private void testReplyDelete() {
+		int result = replyService.deleteReply(1, 1);
+		log.info(result + " 성공");
 	}
 
 	private void testReplyCreate() {
