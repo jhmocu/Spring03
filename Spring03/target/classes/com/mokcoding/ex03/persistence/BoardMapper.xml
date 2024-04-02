@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="type == 'content'.toString()">
 					WHERE BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				</when>
-				<when test="type == 'name'.toString()">
+				<when test="type == 'writer'.toString()">
 					WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				</when>
 			</choose>	
