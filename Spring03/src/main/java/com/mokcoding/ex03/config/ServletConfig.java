@@ -28,7 +28,11 @@ public class ServletConfig implements WebMvcConfigurer{
 	// ResourceHandlers 설정 메서드
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// resources 디렉토리 설정
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		// 정적 리소스 핸들러를 추가 
+		// "/resources/**" 패턴의 요청을 처리하기 위한 핸들러를 등록
+		// "/resources/" 경로에 위치한 정적 리소스를 사용할 수 있도록 설정
+		registry
+		.addResourceHandler("/resources/**")
+		.addResourceLocations("/resources/");
 	}
 } // end ServletConfig

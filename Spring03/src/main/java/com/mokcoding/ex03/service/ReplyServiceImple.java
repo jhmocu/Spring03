@@ -58,14 +58,13 @@ public class ReplyServiceImple implements ReplyService{
 		return replyMapper.update(reply);
 	}
 
-	@Transactional(value = "transactionManager")
+	@Transactional(value = "transactionManager") // transactionManager가 관리
 	@Override
 	public int deleteReply(int replyId, int boardId) {
 		log.info("deleteReply()");
 		log.info("replyId = " + replyId);
 		int deleteResult = replyMapper.delete(replyId);
 		log.info(deleteResult + "행 댓글 삭제");
-		
 		int updateResult = boardMapper
 				.updateReplyCount(boardId, -1);
 		log.info(updateResult + "행 게시판 수정");
